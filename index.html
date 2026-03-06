@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Panadería El Buen Trigo. Pan caliente todo el día, facturas de manteca, pastelería y sándwiches de miga.">
+    <title>Panadería El Buen Trigo | Recién Horneado</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,600;1,600&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Paleta de colores: Tonos pan, dorado y café */
+        :root {
+            --coffee: #4A3022; /* Marrón oscuro para textos */
+            --crust-gold: #D48C29; /* Naranja/Dorado tostado */
+            --dough-light: #FDF9F1; /* Crema muy suave de fondo */
+            --white: #FFFFFF;
+            --wa-green: #25D366;
+            --font-title: 'Lora', serif;
+            --font-text: 'Nunito', sans-serif;
+            --shadow: 0 8px 30px rgba(74, 48, 34, 0.08);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: var(--font-text); color: var(--coffee); background-color: var(--dough-light); }
+        .container { width: 90%; max-width: 1200px; margin: 0 auto; }
+
+        /* --- Navegación (Blanca y limpia) --- */
+        .navbar {
+            position: fixed; width: 100%; top: 0; background-color: var(--white);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05); z-index: 1000;
+        }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; height: 75px; }
+        .logo { font-family: var(--font-title); font-size: 1.8rem; color: var(--crust-gold); text-decoration: none; font-weight: 600; }
+        .nav-links { display: flex; list-style: none; gap: 2rem; }
+        .nav-links a { text-decoration: none; color: var(--coffee); font-weight: 700; font-size: 1rem; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--crust-gold); }
+
+        /* --- Hero Section (Overlapping UI) --- */
+        .hero {
+            position: relative; height: 90vh; min-height: 600px; margin-top: 75px;
+            background: url('https://images.unsplash.com/photo-1505253149613-112d21d9f6a9?q=80&w=1920&auto=format&fit=crop') center/cover no-repeat;
+            display: flex; align-items: center; justify-content: center;
+        }
+        /* Caja superpuesta blanca */
+        .hero-box {
+            background-color: rgba(255, 255, 255, 0.95); padding: 50px; border-radius: 20px;
+            text-align: center; max-width: 650px; box-shadow: var(--shadow);
+            backdrop-filter: blur(5px); transform: translateY(30px);
+        }
+        .hero-box h1 { font-family: var(--font-title); font-size: 3.5rem; color: var(--coffee); margin-bottom: 15px; line-height: 1.1; }
+        .hero-box p { font-size: 1.2rem; color: #666; margin-bottom: 30px; font-weight: 600; }
+
+        /* Botones */
+        .btn {
+            display: inline-block; padding: 14px 35px; border-radius: 50px; text-decoration: none;
+            font-weight: 800; transition: 0.3s; border: none; cursor: pointer; text-align: center; letter-spacing: 0.5px;
+        }
+        .btn-main { background-color: var(--crust-gold); color: var(--white); box-shadow: 0 4px 15px rgba(212, 140, 41, 0.3); }
+        .btn-main:hover { background-color: #b8761f; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(212, 140, 41, 0.4); }
+        
+        .btn-wa-combo { background-color: var(--wa-green); color: var(--white); font-size: 0.9rem; padding: 10px 20px; border-radius: 8px; width: 100%; display: block; margin-top: 15px;}
+        .btn-wa-combo:hover { filter: brightness(1.05); }
+
+        /* Secciones Generales */
+        .section { padding: 80px 0; }
+        .section-header { text-align: center; margin-bottom: 50px; }
+        .section-header h2 { font-family: var(--font-title); font-size: 2.8rem; color: var(--coffee); margin-bottom: 10px; }
+        .section-header p { color: var(--crust-gold); font-weight: 800; text-transform: uppercase; letter-spacing: 2px; font-size: 0.9rem; }
+
+        /* --- Categorías (Tarjetas redondeadas) --- */
+        .category-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; }
+        .cat-card {
+            background-color: var(--white); border-radius: 20px; overflow: hidden;
+            box-shadow: var(--shadow); transition: 0.3s; cursor: pointer; text-align: center;
+        }
+        .cat-card:hover { transform: translateY(-5px); }
+        .cat-img { height: 200px; background-size: cover; background-position: center; }
+        .cat-title { padding: 20px; font-family: var(--font-title); font-size: 1.5rem; color: var(--coffee); }
+
+        /* --- Promos y Combos --- */
+        .promo-section { background-color: var(--white); }
+        .promo-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .promo-card {
+            background-color: var(--dough-light); border: 2px dashed #E0D5C1; padding: 30px;
+            border-radius: 15px; text-align: center; position: relative; transition: 0.3s;
+        }
+        .promo-card:hover { border-color: var(--crust-gold); background-color: #fff; box-shadow: var(--shadow); }
+        .promo-card h3 { font-family: var(--font-title); font-size: 1.6rem; color: var(--coffee); margin-bottom: 10px; }
+        .promo-card p { font-size: 1rem; color: #666; margin-bottom: 15px; height: 45px; }
+        .promo-price { font-size: 2rem; font-weight: 800; color: var(--crust-gold); margin-bottom: 10px; }
+
+        /* --- Ubicación y Horarios --- */
+        .location-wrapper {
+            display: flex; flex-wrap: wrap; background: var(--white); border-radius: 20px; overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+        .location-info { flex: 1; min-width: 300px; padding: 50px; display: flex; flex-direction: column; justify-content: center; }
+        .location-info h3 { font-family: var(--font-title); font-size: 2rem; color: var(--coffee); margin-bottom: 25px; }
+        .info-row { display: flex; align-items: flex-start; gap: 15px; margin-bottom: 20px; font-size: 1.1rem; }
+        .info-row strong { color: var(--crust-gold); }
+        .map-box { flex: 1.5; min-width: 300px; min-height: 400px; }
+        .map-box iframe { width: 100%; height: 100%; border: none; }
+
+        /* --- Footer --- */
+        footer { background-color: var(--coffee); color: var(--dough-light); padding: 50px 0 30px; text-align: center; }
+        footer .logo { color: var(--white); font-size: 2rem; display: block; margin-bottom: 10px; }
+        footer p { font-size: 0.9rem; opacity: 0.8; }
+
+        /* Botón Flotante WA */
+        .wa-float {
+            position: fixed; bottom: 30px; right: 30px; width: 65px; height: 65px;
+            background-color: var(--wa-green); border-radius: 50%; display: flex;
+            align-items: center; justify-content: center; color: var(--white);
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4); z-index: 999; transition: 0.3s;
+        }
+        .wa-float:hover { transform: scale(1.1); }
+
+        /* Responsividad Móvil */
+        @media (max-width: 768px) {
+            .hero-box { padding: 30px 20px; transform: translateY(0); width: 90%; }
+            .hero-box h1 { font-size: 2.5rem; }
+            .nav-links { display: none; }
+            .location-wrapper { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar" id="navbar">
+        <div class="container nav-container">
+            <a href="#" class="logo">El Buen Trigo</a>
+            <ul class="nav-links">
+                <li><a href="#especialidades">Especialidades</a></li>
+                <li><a href="#promos">Promociones</a></li>
+                <li><a href="#ubicacion">Ubicación</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-box">
+            <h1>El aroma del pan <br>recién horneado</h1>
+            <p>Amasamos todos los días desde las 4 AM para que lleves frescura y calidad a tu mesa. Facturas, panes artesanales y pastelería.</p>
+            <a href="#promos" class="btn btn-main">Ver Promociones de Hoy</a>
+        </div>
+    </header>
+
+    <main>
+        <section id="especialidades" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <p>Nuestros Mostradores</p>
+                    <h2>Especialidades</h2>
+                </div>
+                
+                <div class="category-grid">
+                    <article class="cat-card">
+                        <div class="cat-img" style="background-image: url('https://images.unsplash.com/photo-1549931319-a545dcf3bc73?q=80&w=600&auto=format&fit=crop');"></div>
+                        <h3 class="cat-title">Panadería Artesanal</h3>
+                    </article>
+                    <article class="cat-card">
+                        <div class="cat-img" style="background-image: url('https://images.unsplash.com/photo-1509365465985-25d11c17e812?q=80&w=600&auto=format&fit=crop');"></div>
+                        <h3 class="cat-title">Facturas de Manteca</h3>
+                    </article>
+                    <article class="cat-card">
+                        <div class="cat-img" style="background-image: url('https://images.unsplash.com/photo-1551024601-bec78aea704b?q=80&w=600&auto=format&fit=crop');"></div>
+                        <h3 class="cat-title">Pastelería Dulce</h3>
+                    </article>
+                    <article class="cat-card">
+                        <div class="cat-img" style="background-image: url('https://images.unsplash.com/photo-1528735602780-2552fd46c7af?q=80&w=600&auto=format&fit=crop');"></div>
+                        <h3 class="cat-title">Sándwiches de Miga</h3>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="promos" class="section promo-section">
+            <div class="container">
+                <div class="section-header">
+                    <p>Resolvé tu comida</p>
+                    <h2>Combos y Promociones</h2>
+                </div>
+                
+                <div class="promo-grid">
+                    <div class="promo-card">
+                        <h3>Combo Desayuno</h3>
+                        <p>1/2 Docena de Facturas variadas + 250gr de Criollitos.</p>
+                        <div class="promo-price">$4.500</div>
+                        <a href="https://wa.me/5492656000000?text=Hola!%20Quiero%20encargar%20un%20Combo%20Desayuno%20para%20pasar%20a%20buscar." class="btn-wa-combo" target="_blank">Encargar por WhatsApp</a>
+                    </div>
+
+                    <div class="promo-card">
+                        <h3>Promo Miga Clásica</h3>
+                        <p>1 Docena de Sándwiches de Miga (Jamón y Queso) triples.</p>
+                        <div class="promo-price">$12.000</div>
+                        <a href="https://wa.me/5492656000000?text=Hola!%20Quiero%20encargar%20la%20Promo%20Miga%20Clásica." class="btn-wa-combo" target="_blank">Encargar por WhatsApp</a>
+                    </div>
+
+                    <div class="promo-card">
+                        <h3>Mesa Dulce Cumple</h3>
+                        <p>1 Torta a elección (1.5kg) + 1 Tarta (Pastafrola o Coco).</p>
+                        <div class="promo-price">$28.000</div>
+                        <a href="https://wa.me/5492656000000?text=Hola!%20Quería%20consultar%20por%20la%20Mesa%20Dulce%20Cumple." class="btn-wa-combo" target="_blank">Consultar por WhatsApp</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="ubicacion" class="section">
+            <div class="container">
+                <div class="location-wrapper">
+                    <div class="location-info">
+                        <h3>Vení a buscar lo rico</h3>
+                        
+                        <div class="info-row">
+                            <strong>🕒</strong>
+                            <div>
+                                <h4 style="color: var(--coffee); margin-bottom: 5px;">Horarios de Atención</h4>
+                                <p>Lunes a Sábados:<br>06:30 a 13:30 hs y 16:30 a 21:00 hs<br>Domingos: 07:00 a 13:30 hs</p>
+                            </div>
+                        </div>
+                        
+                        <div class="info-row">
+                            <strong>📍</strong>
+                            <div>
+                                <h4 style="color: var(--coffee); margin-bottom: 5px;">Nuestra Esquina</h4>
+                                <p>Av. del Sol y Pringles, Villa de Merlo.</p>
+                            </div>
+                        </div>
+
+                        <div class="info-row">
+                            <strong>🛵</strong>
+                            <div>
+                                <h4 style="color: var(--coffee); margin-bottom: 5px;">¿Hacen Envíos?</h4>
+                                <p>Hacemos envíos locales a partir de $10.000.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="map-box">
+                        <iframe src="https://www.google.com/maps/embed?..." allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <a href="#" class="logo">El Buen Trigo</a>
+            <p>© 2026 Panadería El Buen Trigo. Horneando sonrisas.</p>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/5492656000000?text=Hola!%20Tengo%20una%20consulta." class="wa-float" target="_blank" aria-label="Escribinos por WhatsApp">
+        <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/>
+        </svg>
+    </a>
+
+</body>
+</html>
