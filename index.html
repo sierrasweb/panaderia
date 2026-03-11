@@ -6,7 +6,7 @@
     <meta name="description" content="Panadería El Buen Trigo. Pan caliente todo el día, facturas de manteca, pastelería y sándwiches de miga.">
     <title>Panadería El Buen Trigo | Recién Horneado</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,600;1,600&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@800&family=Lora:ital,wght@0,600;1,600&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
     
     <style>
         /* Paleta de colores: Tonos pan, dorado y café */
@@ -26,24 +26,33 @@
         body { font-family: var(--font-text); color: var(--coffee); background-color: var(--dough-light); }
         .container { width: 90%; max-width: 1200px; margin: 0 auto; }
 
-        /* --- Navegación (Blanca y limpia) --- */
+        /* --- Navegación --- */
         .navbar {
             position: fixed; width: 100%; top: 0; background-color: var(--white);
             box-shadow: 0 2px 15px rgba(0,0,0,0.05); z-index: 1000;
         }
         .nav-container { display: flex; justify-content: space-between; align-items: center; height: 75px; }
-        .logo { font-family: var(--font-title); font-size: 1.8rem; color: var(--crust-gold); text-decoration: none; font-weight: 600; }
+        .logo { font-family: var(--font-title); font-size: 1.8rem; color: var(--crust-gold); text-decoration: none; font-weight: 600; z-index: 1001; }
+        
         .nav-links { display: flex; list-style: none; gap: 2rem; }
         .nav-links a { text-decoration: none; color: var(--coffee); font-weight: 700; font-size: 1rem; transition: color 0.3s; }
         .nav-links a:hover { color: var(--crust-gold); }
 
-        /* --- Hero Section (Overlapping UI) --- */
+        /* Menú Hamburguesa (Oculto en PC) */
+        .menu-toggle {
+            display: none; flex-direction: column; cursor: pointer; gap: 6px; z-index: 1001;
+        }
+        .menu-toggle .bar {
+            width: 30px; height: 3px; background-color: var(--coffee); border-radius: 3px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        /* --- Hero Section --- */
         .hero {
             position: relative; height: 90vh; min-height: 600px; margin-top: 75px;
             background: url('https://images.unsplash.com/photo-1505253149613-112d21d9f6a9?q=80&w=1920&auto=format&fit=crop') center/cover no-repeat;
             display: flex; align-items: center; justify-content: center;
         }
-        /* Caja superpuesta blanca */
         .hero-box {
             background-color: rgba(255, 255, 255, 0.95); padding: 50px; border-radius: 20px;
             text-align: center; max-width: 650px; box-shadow: var(--shadow);
@@ -60,7 +69,7 @@
         .btn-main { background-color: var(--crust-gold); color: var(--white); box-shadow: 0 4px 15px rgba(212, 140, 41, 0.3); }
         .btn-main:hover { background-color: #b8761f; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(212, 140, 41, 0.4); }
         
-        .btn-wa-combo { background-color: var(--wa-green); color: var(--white); font-size: 0.9rem; padding: 10px 20px; border-radius: 8px; width: 100%; display: block; margin-top: 15px;}
+        .btn-wa-combo { background-color: var(--wa-green); color: var(--white); font-size: 0.9rem; padding: 10px 20px; border-radius: 8px; width: 100%; display: block; margin-top: 15px; text-decoration: none; font-weight: 700;}
         .btn-wa-combo:hover { filter: brightness(1.05); }
 
         /* Secciones Generales */
@@ -69,7 +78,7 @@
         .section-header h2 { font-family: var(--font-title); font-size: 2.8rem; color: var(--coffee); margin-bottom: 10px; }
         .section-header p { color: var(--crust-gold); font-weight: 800; text-transform: uppercase; letter-spacing: 2px; font-size: 0.9rem; }
 
-        /* --- Categorías (Tarjetas redondeadas) --- */
+        /* --- Categorías --- */
         .category-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; }
         .cat-card {
             background-color: var(--white); border-radius: 20px; overflow: hidden;
@@ -108,6 +117,37 @@
         footer .logo { color: var(--white); font-size: 2rem; display: block; margin-bottom: 10px; }
         footer p { font-size: 0.9rem; opacity: 0.8; }
 
+        /* FIRMA DEL DESARROLLADOR - SIERRAS WEB (SOLO TEXTO) */
+        .agency-credit {
+            margin-top: 40px;
+            padding-top: 25px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-size: 0.9rem;
+            color: rgba(253, 249, 241, 0.7); /* dough-light con opacidad */
+        }
+        
+        .sierras-logo-text {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 800;
+            text-decoration: none;
+            color: #FFFFFF; /* Sierras en blanco porque el footer es oscuro */
+            letter-spacing: -0.5px;
+            transition: opacity 0.3s ease;
+        }
+        
+        .sierras-logo-text span {
+            color: #0284C7; /* Azul Sierras Web */
+        }
+        
+        .sierras-logo-text:hover {
+            opacity: 0.8;
+        }
+
         /* Botón Flotante WA */
         .wa-float {
             position: fixed; bottom: 30px; right: 30px; width: 65px; height: 65px;
@@ -121,8 +161,32 @@
         @media (max-width: 768px) {
             .hero-box { padding: 30px 20px; transform: translateY(0); width: 90%; }
             .hero-box h1 { font-size: 2.5rem; }
-            .nav-links { display: none; }
             .location-wrapper { flex-direction: column; }
+            
+            /* --- ESTILOS DEL MENÚ MÓVIL --- */
+            .menu-toggle { display: flex; }
+            
+            .nav-links {
+                position: fixed;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100vh;
+                background-color: var(--white);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transition: left 0.4s ease;
+            }
+            .nav-links.active { left: 0; }
+            .nav-links a { font-size: 1.5rem; }
+            
+            /* Animación de la X */
+            .menu-toggle.is-active .bar:nth-child(2) { opacity: 0; }
+            .menu-toggle.is-active .bar:nth-child(1) { transform: translateY(9px) rotate(45deg); }
+            .menu-toggle.is-active .bar:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
+            
+            .agency-credit { flex-direction: column; gap: 5px; }
         }
     </style>
 </head>
@@ -131,10 +195,17 @@
     <nav class="navbar" id="navbar">
         <div class="container nav-container">
             <a href="#" class="logo">El Buen Trigo</a>
-            <ul class="nav-links">
-                <li><a href="#especialidades">Especialidades</a></li>
-                <li><a href="#promos">Promociones</a></li>
-                <li><a href="#ubicacion">Ubicación</a></li>
+            
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#especialidades" class="nav-link">Especialidades</a></li>
+                <li><a href="#promos" class="nav-link">Promociones</a></li>
+                <li><a href="#ubicacion" class="nav-link">Ubicación</a></li>
             </ul>
         </div>
     </nav>
@@ -251,6 +322,14 @@
         <div class="container">
             <a href="#" class="logo">El Buen Trigo</a>
             <p>© 2026 Panadería El Buen Trigo. Horneando sonrisas.</p>
+            
+            <div class="agency-credit">
+                <span>Desarrollado por</span>
+                <a href="https://www.sierrasweb.com.ar/" target="_blank" class="sierras-logo-text">
+                    Sierras<span>Web</span>
+                </a>
+            </div>
+
         </div>
     </footer>
 
@@ -259,6 +338,26 @@
             <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/>
         </svg>
     </a>
+
+    <script>
+        const menuToggle = document.getElementById('mobile-menu');
+        const navLinks = document.getElementById('nav-links');
+        const navItems = document.querySelectorAll('.nav-link');
+
+        // Abrir/Cerrar al tocar la hamburguesa
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('is-active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Cerrar el menú automáticamente al tocar un enlace
+        navItems.forEach(item => {
+            item.addEventListener('click', () => {
+                menuToggle.classList.remove('is-active');
+                navLinks.classList.remove('active');
+            });
+        });
+    </script>
 
 </body>
 </html>
