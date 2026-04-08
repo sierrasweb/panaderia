@@ -6,10 +6,9 @@
 <title>Panadería El Buen Trigo - Pedidos Online</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@800&family=Lora:ital,wght@0,600;1,600&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
-/* --- 🎨 Variables y Estilos Generales (Panadería) --- */
+/* --- 🎨 Variables y Estilos Generales --- */
 :root {
-    /* Paleta Panadería */
-    --coffee: #4A3022; 
+    var(--coffee): #4A3022; 
     --crust-gold: #D48C29; 
     --crust-gold-hover: #b8761f;
     --dough-light: #FDF9F1; 
@@ -21,7 +20,7 @@
     --bg-input: var(--white);
     --borde-color: #E0D5C1;
     
-    --texto-principal: var(--coffee);
+    --texto-principal: #4A3022;
     --texto-secundario: #665349;
     
     --rojo-cerrado: #E53935;
@@ -33,7 +32,7 @@
     --radio-borde: 20px;
 }
 
-/* --- 🌙 Variables Modo Oscuro (Adaptado a tonos café oscuro) --- */
+/* --- 🌙 Variables Modo Oscuro --- */
 body.dark-mode {
     --bg-body: #2A1C14;
     --bg-card: #38261C;
@@ -66,7 +65,6 @@ body {
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Tipografía para Títulos */
 h1, h2, h3, .titulo-seccion {
     font-family: 'Lora', serif;
 }
@@ -122,7 +120,7 @@ h1, h2, h3, .titulo-seccion {
 /* --- Header --- */
 header { 
     background: var(--bg-card);
-    color: var(--coffee); 
+    color: var(--texto-principal); 
     display: flex; 
     justify-content: space-between; 
     align-items: center; 
@@ -163,7 +161,7 @@ header h1 {
     gap: 15px; 
 }
 
-/* --- Cartel de Estado Profesional --- */
+/* --- Cartel de Estado --- */
 .estado-local {
     padding: 8px 18px;
     border-radius: 50px;
@@ -222,6 +220,7 @@ header h1 {
     transition: all 0.3s ease;
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 8px;
     white-space: nowrap;
     font-size: 1rem;
@@ -232,9 +231,7 @@ header h1 {
     color: var(--texto-principal);
     border: 1px solid var(--borde-color);
 }
-.btn-horarios:hover {
-    background: var(--borde-color);
-}
+.btn-horarios:hover { background: var(--borde-color); }
 
 .btn-carrito { 
     background: var(--crust-gold); 
@@ -335,7 +332,6 @@ header h1 {
     flex-grow: 1;
 }
 
-/* --- Contenedor de Filtros --- */
 .controles-filtros {
     display: flex;
     gap: 15px;
@@ -357,16 +353,13 @@ header h1 {
     outline: none;
     min-width: 180px;
     appearance: none; 
-    /* El icono de la flecha usa el color --crust-gold (#D48C29) */
     background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23D48C29%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
     background-repeat: no-repeat;
     background-position: right 15px top 50%;
     background-size: 12px auto;
     width: auto;
 }
-.select-categoria:focus {
-    border-color: var(--crust-gold);
-}
+.select-categoria:focus { border-color: var(--crust-gold); }
 
 .buscador-input {
     padding: 12px 20px;
@@ -470,7 +463,6 @@ header h1 {
 }
 
 .producto-card .btn-agregar:disabled { background: var(--borde-color); color: var(--texto-secundario); box-shadow: none; cursor: not-allowed; }
-
 .producto-card .btn-agregar:hover:not(:disabled) { 
     background: var(--crust-gold-hover); 
     transform: translateY(-2px);
@@ -500,7 +492,6 @@ header h1 {
 
 /* --- Lista Horarios --- */
 .lista-horarios { list-style: none; padding: 0; margin: 10px 0 0 0; display: flex; flex-direction: column; gap: 10px;}
-
 .lista-horarios li { 
     display: grid; 
     grid-template-columns: 120px 1fr; 
@@ -511,7 +502,6 @@ header h1 {
     border: 1px dashed var(--borde-color);
     transition: all 0.2s;
 }
-
 .horario-dia {
     font-weight: 700;
     color: var(--texto-secundario);
@@ -578,7 +568,6 @@ header h1 {
     width: 45px;
     height: 45px;
     border-radius: 50%;
-    border: none;
     background: var(--bg-card); 
     color: var(--texto-principal);
     border: 1px solid var(--borde-color);
@@ -598,74 +587,98 @@ header h1 {
     border-color: var(--crust-gold);
 }
 
-/* --- RESPONSIVE OPTIMIZADO PARA MÓVILES --- */
+/* ========================================================
+   📱 RESPONSIVE OPTIMIZADO PARA MÓVILES (CORREGIDO)
+   ======================================================== */
 @media (max-width: 768px) {
     body { font-size: 14px; }
     .categorias-sidebar { display: none; }
     
     .banner-top {
         font-size: 0.85rem;
-        padding: 8px 35px 8px 10px;
-        text-align: left;
+        padding: 8px 30px 8px 10px;
+        text-align: center;
     }
-    .banner-contenido { justify-content: center; }
+    .banner-contenido { justify-content: center; text-align: center; }
 
-    header { padding: 15px; flex-direction: column; gap: 15px;}
-    .logo-negocio { width: 55px; height: 55px; } 
-    header h1 { font-size: 1.6rem; margin-left: 0; text-align: center;}
+    /* Header reestructurado */
+    header { padding: 15px 15px; flex-direction: column; gap: 15px; }
+    .marca-container { flex-direction: column; text-align: center; gap: 8px; width: 100%; }
+    .logo-negocio { width: 65px; height: 65px; } 
+    header h1 { font-size: 1.5rem; }
     
-    .header-controles { width: 100%; justify-content: center; flex-wrap: wrap; gap: 10px; }
-    .btn-header { flex-grow: 1; justify-content: center; padding: 10px 12px; font-size: 0.9rem; }
-    .estado-local { padding: 8px 12px; font-size: 0.85rem; }
+    /* Grilla estricta para los controles del header */
+    .header-controles { 
+        width: 100%; 
+        display: grid; 
+        grid-template-columns: 1fr 1fr; 
+        gap: 10px; 
+    }
+    .estado-local { 
+        grid-column: span 2; 
+        justify-content: center; 
+        font-size: 0.9rem;
+        padding: 10px;
+    }
+    .btn-header { padding: 10px; font-size: 0.9rem; width: 100%; justify-content: center; }
+    .btn-carrito { 
+        grid-column: span 2; 
+        padding: 14px; 
+        font-size: 1.1rem; /* Botón de carrito más grande para móviles */
+    }
     
-    .tienda-container { flex-direction: column; margin: 20px auto; padding: 0 15px; gap: 15px;}
+    /* Separación adicional al fondo para evitar que los botones flotantes tapen contenido */
+    .tienda-container { flex-direction: column; margin: 15px auto; padding: 0 15px 90px 15px; gap: 15px;}
 
     .header-filtros { 
-        padding: 20px; 
+        padding: 15px; 
         gap: 15px; 
         flex-direction: column;
         align-items: stretch;
     }
     
-    .titulo-seccion { 
-        text-align: center; 
-        font-size: 1.4rem; 
-        width: 100%;
-        margin-bottom: 5px;
-    }
+    .titulo-seccion { text-align: center; font-size: 1.4rem; width: 100%; margin-bottom: 5px; }
     
     .controles-filtros { 
         display: flex;
         flex-direction: column;
-        gap: 12px; 
+        gap: 10px; 
         width: 100%; 
     }
     
     .select-categoria, .buscador-input { 
         padding: 12px 15px; 
         height: 48px;
-        font-size: 0.95rem; 
+        font-size: 16px; /* 16px evita que iOS haga zoom automático */
         width: 100% !important;
         min-width: 0 !important;
         max-width: none;
         margin: 0;
     }
 
-    .buscador-input:focus { width: 100% !important; }
-
-    .grid-productos { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 15px; }
+    /* Grilla de Productos: Forzar máximo 2 artículos por fila para mantener proporción */
+    .grid-productos { 
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 12px; 
+    }
     
-    .producto-card { padding: 15px; }
-    .producto-card img { height: 110px; margin-bottom: 12px; }
-    .producto-card h3 { font-size: 1.05rem; min-height: 40px; margin: 5px 0; line-height: 1.2; }
-    .producto-card .precio { font-size: 1.25rem; margin-bottom: 12px; }
-    .producto-card .btn-agregar { padding: 10px; font-size: 0.9rem; }
-    .producto-card .cinta-oferta { font-size: 0.65rem; padding: 6px 40px; top: 12px; left: -35px; }
+    .producto-card { padding: 12px; }
+    .producto-card img { height: 110px; margin-bottom: 10px; border-radius: 8px;}
+    .producto-card h3 { font-size: 0.95rem; min-height: 40px; margin: 5px 0; line-height: 1.2; }
+    .producto-card .precio { font-size: 1.15rem; margin-bottom: 10px; }
+    .producto-card .btn-agregar { padding: 8px 10px; font-size: 0.85rem; }
+    .producto-card .cinta-oferta { font-size: 0.65rem; padding: 4px 35px; top: 10px; left: -32px; }
 
-    .modal-content { padding: 25px 20px; width: 95%; }
+    .modal-content { padding: 25px 20px; width: 95%; max-height: 85vh;}
+    #form-cliente input { font-size: 16px; } /* 16px evita zoom en iOS */
     
-    .utilidades-container { bottom: 15px; left: 15px; gap: 10px; }
-    .btn-flotante { width: 40px; height: 40px; font-size: 1rem; }
+    .utilidades-container { bottom: 15px; left: 15px; gap: 10px; transform: scale(0.9); transform-origin: bottom left; }
+}
+
+/* Teléfonos extremadamente pequeños */
+@media (max-width: 360px) {
+    .grid-productos { grid-template-columns: 1fr; }
+    .producto-card img { height: 160px; }
 }
 </style>
 </head>
@@ -1045,7 +1058,7 @@ async function cargarProductosRemotos() {
         } else throw new Error();
     } catch(e) {
         errorMsg.style.display='block';
-        productos = [{id:1,nombre:'Docena de Facturas (Demo)',precio:4500,categoria:'panadería',stock:10}];
+        productos = [{id:1,nombre:'Producto de Prueba',precio:4500,categoria:'varios',stock:10}];
     } finally {
         loading.style.display='none';
         inicializarCategorias();
@@ -1198,7 +1211,7 @@ document.getElementById('btn-cerrar-horarios').addEventListener('click', ()=> mo
 btnEnviarPedido.addEventListener('click', (e) => {
     e.preventDefault();
     verificarEstadoNegocio();
-    if(!negocioAbierto) return alert("La panadería está cerrada en este momento.");
+    if(!negocioAbierto) return alert("El local está cerrado en este momento.");
     
     const nom = formCliente.querySelector('#nombre').value;
     const cel = formCliente.querySelector('#celular').value;
@@ -1214,7 +1227,7 @@ btnEnviarPedido.addEventListener('click', (e) => {
     fetch(URL_SHEET_REGISTRO, { method:'POST', mode:'cors', body: JSON.stringify({negocio_id:negocioActual, nombre_cliente:nom, celular_cliente:cel, detalle_compra:detalle, total:total}) }).catch(console.error);
 
     setTimeout(() => {
-        const msg = `¡Hola El Buen Trigo! Soy *${nom}*. Quiero encargar:%0A${carrito.map(i=>`▪ ${i.cantidad}x ${i.nombre}`).join('%0A')}%0A*Total: ${formatPrice(total)}*`;
+        const msg = `¡Hola! Soy *${nom}*. Quiero encargar:%0A${carrito.map(i=>`▪ ${i.cantidad}x ${i.nombre}`).join('%0A')}%0A*Total: ${formatPrice(total)}*`;
         window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`, '_blank');
         carrito=[]; localStorage.removeItem(STORAGE_KEY); actualizarCarritoUI();
         modal.classList.remove('visible');
