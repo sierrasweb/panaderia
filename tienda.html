@@ -525,21 +525,36 @@ header h1 {
     .header-controles { width: 100%; justify-content: center; flex-wrap: wrap; gap: 10px; }
     .btn-header { flex-grow: 1; justify-content: center; padding: 10px 15px; font-size: 0.9rem; }
     
-    .tienda-container { flex-direction: column; margin: 20px auto; padding: 0 15px; gap: 20px;}
-    .header-filtros { padding: 20px; gap: 15px; flex-direction: column; align-items: stretch; }
-    .titulo-seccion { text-align: center; width: 100%; margin-bottom: 10px;}
+    .tienda-container { flex-direction: column; margin: 15px auto; padding: 0 10px; gap: 15px;}
+    .header-filtros { padding: 15px; gap: 10px; flex-direction: column; align-items: stretch; margin-bottom: 15px; }
+    .titulo-seccion { text-align: center; width: 100%; margin-bottom: 5px; font-size: 1.4rem;}
     
-    .controles-filtros { display: flex; flex-direction: column; gap: 12px; width: 100%; }
-    .select-categoria, .buscador-input { height: 50px; width: 100% !important; min-width: 0 !important; }
+    .controles-filtros { display: flex; flex-direction: column; gap: 10px; width: 100%; }
+    .select-categoria, .buscador-input { height: 45px; width: 100% !important; min-width: 0 !important; font-size: 0.9rem; }
 
-    .grid-productos { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 15px; }
-    .producto-card { padding: 15px; }
-    .producto-card img { height: 120px; margin-bottom: 15px; }
-    .producto-card h3 { font-size: 1.1rem; min-height: 40px; margin: 5px 0; }
-    .producto-card .precio { font-size: 1.3rem; margin-bottom: 15px; }
+    /* FORZAR 2 COLUMNAS EN MÓVIL */
+    .grid-productos { 
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 10px; /* Reducimos el margen entre tarjetas */
+    }
     
-    .modal-content { padding: 25px; width: 95%; border-radius: 20px;}
-    .utilidades-container { bottom: 20px; left: 20px; gap: 12px; }
+    /* Ajustes milimétricos para que la tarjeta de 2 columnas se vea elegante */
+    .producto-card { padding: 10px; border-radius: 15px; }
+    .producto-card img { height: 90px; margin-bottom: 10px; border-radius: 8px; }
+    .producto-card h3 { font-size: 0.9rem; min-height: 38px; margin: 5px 0; line-height: 1.2; }
+    .producto-card .precio { font-size: 1.15rem; margin-bottom: 10px; }
+    .producto-card .btn-agregar { padding: 8px 5px; font-size: 0.8rem; }
+    
+    /* Ajuste de la cinta de oferta para que no se desborde */
+    .producto-card .cinta-oferta {
+        top: 10px; 
+        left: -30px;
+        padding: 4px 35px;
+        font-size: 0.65rem;
+    }
+    
+    .modal-content { padding: 20px; width: 95%; border-radius: 15px;}
+    .utilidades-container { bottom: 15px; left: 15px; gap: 10px; }
     .btn-flotante { width: 45px; height: 45px; font-size: 1.1rem; }
 }
 </style>
