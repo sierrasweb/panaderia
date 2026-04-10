@@ -3,51 +3,48 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Panadería El Buen Trigo - Pedidos Online</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@800&family=Lora:ital,wght@0,600;1,600&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<title>Verdulería "El Fresquito" - Pedidos Online</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
 <style>
 /* --- 🎨 Variables y Estilos Generales --- */
 :root {
-    var(--coffee): #4A3022; 
-    --crust-gold: #D48C29; 
-    --crust-gold-hover: #b8761f;
-    --dough-light: #FDF9F1; 
-    --white: #FFFFFF;
-    --wa-green: #25D366;
-
-    --bg-body: var(--dough-light);
-    --bg-card: var(--white);
-    --bg-input: var(--white);
-    --borde-color: #E0D5C1;
-    
-    --texto-principal: #4A3022;
-    --texto-secundario: #665349;
-    
+    /* Paleta Clara (Default) */
+    --verde-fresco: #4CAF50;
+    --verde-oscuro: #2E7D32;
+    --verde-claro-bg: #E8F5E9;
+    --naranja-acento: #FF9800;
+    --naranja-oscuro: #F57C00;
     --rojo-cerrado: #E53935;
     
-    --sombra-sutil: 0 4px 15px rgba(74, 48, 34, 0.05);
-    --sombra-media: 0 8px 30px rgba(74, 48, 34, 0.08);
-    --sombra-flotante: 0 15px 35px rgba(74, 48, 34, 0.15), 0 5px 15px rgba(74, 48, 34, 0.05);
+    --texto-principal: #37474F;
+    --texto-secundario: #546E7A;
+    --bg-body: #f4f7f6;
+    --bg-card: #ffffff;
+    --bg-input: #ffffff;
+    --borde-color: #e0e0e0;
     
-    --radio-borde: 20px;
+    --sombra-sutil: 0 2px 5px rgba(0,0,0,0.05);
+    --sombra-media: 0 5px 15px rgba(0,0,0,0.08);
+    --sombra-flotante: 0 15px 35px rgba(0,0,0,0.1), 0 5px 15px rgba(0,0,0,0.05);
+    
+    --radio-borde: 16px;
 }
 
 /* --- 🌙 Variables Modo Oscuro --- */
 body.dark-mode {
-    --bg-body: #2A1C14;
-    --bg-card: #38261C;
-    --bg-input: #4A3022;
-    --borde-color: #5C3D2B;
+    --verde-fresco: #66BB6A;
+    --verde-oscuro: #A5D6A7;
+    --verde-claro-bg: #1B2E1C;
     
-    --texto-principal: #FDF9F1;
-    --texto-secundario: #D48C29;
+    --texto-principal: #E0E0E0;
+    --texto-secundario: #B0BEC5;
+    --bg-body: #121212;
+    --bg-card: #1E1E1E;
+    --bg-input: #2C2C2C;
+    --borde-color: #333333;
     
-    --crust-gold: #E29F42;
-    --crust-gold-hover: #D48C29;
-    
-    --sombra-sutil: 0 4px 15px rgba(0,0,0,0.3);
-    --sombra-media: 0 8px 30px rgba(0,0,0,0.5);
-    --sombra-flotante: 0 15px 35px rgba(0,0,0,0.6);
+    --sombra-sutil: 0 2px 5px rgba(0,0,0,0.3);
+    --sombra-media: 0 5px 15px rgba(0,0,0,0.5);
 }
 
 *, *::before, *::after {
@@ -56,26 +53,24 @@ body.dark-mode {
 }
 
 body { 
-    font-family: 'Nunito', sans-serif; 
+    font-family: 'Roboto', sans-serif; 
     margin: 0; 
     background-color: var(--bg-body);
+    background-image: linear-gradient(to bottom, var(--verde-claro-bg) 0%, var(--bg-body) 400px);
+    background-attachment: fixed;
     color: var(--texto-principal);
     line-height: 1.6;
     overflow-x: hidden;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-h1, h2, h3, .titulo-seccion {
-    font-family: 'Lora', serif;
-}
-
 /* --- BANNER INFORMATIVO --- */
 .banner-top {
-    background: linear-gradient(90deg, var(--crust-gold), var(--crust-gold-hover));
+    background: linear-gradient(90deg, var(--naranja-acento), var(--naranja-oscuro));
     color: white;
-    font-family: 'Nunito', sans-serif;
-    font-size: 0.95rem;
-    font-weight: 700;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
     text-align: center;
     padding: 10px 45px 10px 15px;
     position: relative;
@@ -119,8 +114,8 @@ h1, h2, h3, .titulo-seccion {
 
 /* --- Header --- */
 header { 
-    background: var(--bg-card);
-    color: var(--texto-principal); 
+    background: linear-gradient(135deg, #2E7D32, #4CAF50);
+    color: white; 
     display: flex; 
     justify-content: space-between; 
     align-items: center; 
@@ -129,29 +124,31 @@ header {
     position: sticky; 
     top: 0; 
     z-index: 50;
-    transition: background-color 0.3s ease;
 }
 
 .marca-container {
     display: flex;
     align-items: center;
     gap: 15px;
-    text-decoration: none;
 }
 
 .logo-negocio {
-    height: 50px;
-    width: 50px;
+    height: 60px;
+    width: 60px;
     object-fit: cover;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+    transition: transform 0.3s ease;
+    background: white;
     border-radius: 50%;
-    box-shadow: var(--sombra-sutil);
+    padding: 2px;
 }
 
 header h1 { 
     margin: 0; 
     font-size: 1.8rem; 
-    color: var(--crust-gold);
-    font-weight: 600;
+    font-family: 'Poppins', sans-serif; 
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
     line-height: 1.2;
 }
 
@@ -161,22 +158,22 @@ header h1 {
     gap: 15px; 
 }
 
-/* --- Cartel de Estado --- */
+/* --- Cartel de Estado Profesional --- */
 .estado-local {
     padding: 8px 18px;
     border-radius: 50px;
-    font-weight: 800;
-    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
     font-size: 0.85rem;
     text-transform: uppercase;
     letter-spacing: 0.5px;
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    color: var(--texto-principal);
-    background: var(--bg-body);
-    box-shadow: var(--sombra-sutil);
-    border: 1px solid var(--borde-color);
+    color: var(--verde-oscuro);
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(5px);
     transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     white-space: nowrap;
 }
@@ -193,8 +190,8 @@ header h1 {
 }
 
 .estado-local.cerrado {
-    color: var(--rojo-cerrado);
-    background: rgba(229, 57, 53, 0.1);
+    color: #C62828;
+    background: rgba(255, 235, 238, 0.95);
     border-color: rgba(229, 57, 53, 0.2);
 }
 
@@ -215,36 +212,38 @@ header h1 {
     padding: 10px 22px; 
     border-radius: 50px; 
     cursor: pointer; 
-    font-weight: 700;
-    font-family: 'Nunito', sans-serif;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
     transition: all 0.3s ease;
     display: flex;
     align-items: center;
-    justify-content: center;
     gap: 8px;
     white-space: nowrap;
     font-size: 1rem;
 }
 
+/* Estilo compartido para Horarios y Ubicación */
 .btn-horarios {
-    background: var(--bg-body);
-    color: var(--texto-principal);
-    border: 1px solid var(--borde-color);
+    background: rgba(255,255,255,0.2);
+    color: white;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255,255,255,0.4);
 }
-.btn-horarios:hover { background: var(--borde-color); }
+.btn-horarios:hover {
+    background: rgba(255,255,255,0.3);
+}
 
 .btn-carrito { 
-    background: var(--crust-gold); 
+    background: var(--naranja-acento); 
     color: white; 
-    box-shadow: 0 4px 10px rgba(212, 140, 41, 0.3);
+    box-shadow: 0 4px 10px rgba(255, 152, 0, 0.3);
 }
 .btn-carrito:hover { 
-    background: var(--crust-gold-hover); 
+    background: #F57C00; 
     transform: translateY(-2px);
-    box-shadow: 0 6px 15px rgba(212, 140, 41, 0.4);
 }
 .btn-carrito.pop { animation: pop 0.3s ease; }
-@keyframes pop { 0% { transform: scale(1); } 50% { transform: scale(1.15); } 100% { transform: scale(1); } }
+@keyframes pop { 0% { transform: scale(1); } 50% { transform: scale(1.2); } 100% { transform: scale(1); } }
 
 .btn-carrito span { 
     font-weight: 800;
@@ -273,16 +272,17 @@ header h1 {
     box-shadow: var(--sombra-media);
     height: fit-content;
     position: sticky; 
-    top: 110px; 
-    border: 1px solid var(--borde-color);
+    top: 100px; 
+    border: 1px solid rgba(0,0,0,0.04);
 }
 .categorias-sidebar h2 { 
     margin-top: 0; 
-    color: var(--crust-gold); 
-    border-bottom: 2px solid var(--borde-color);
+    color: var(--verde-oscuro); 
+    font-family: 'Poppins', sans-serif;
+    border-bottom: 2px solid var(--verde-claro-bg);
     padding-bottom: 15px;
     margin-bottom: 15px;
-    font-size: 1.4rem;
+    font-size: 1.3rem;
 }
 .categorias-sidebar ul { list-style: none; padding: 0; margin: 0;}
 .categorias-sidebar li { margin-bottom: 8px; }
@@ -293,20 +293,20 @@ header h1 {
     color: var(--texto-secundario);
     border-radius: 12px; 
     transition: all 0.2s ease;
-    font-weight: 600;
-    font-family: 'Nunito', sans-serif;
+    font-weight: 500;
 }
 .categorias-sidebar li a:hover { 
-    background: var(--bg-body); 
-    color: var(--crust-gold);
+    background: var(--verde-claro-bg); 
+    color: var(--verde-oscuro);
     transform: translateX(5px);
 }
 .categorias-sidebar li a.activo { 
-    background: var(--crust-gold); 
+    background: var(--verde-fresco); 
     color: white; 
-    font-weight: 800;
+    font-weight: 600;
     box-shadow: var(--sombra-sutil);
 }
+body.dark-mode .categorias-sidebar li a.activo { color: #121212; font-weight: 700; } 
 
 /* Área de Productos */
 .productos-lista { flex: 1; min-width: 0; }
@@ -322,16 +322,17 @@ header h1 {
     align-items: center;
     gap: 15px;
     flex-wrap: wrap;
-    border: 1px solid var(--borde-color);
 }
 
 .titulo-seccion {
-    color: var(--texto-principal);
-    font-size: 1.6rem;
+    font-family: 'Poppins', sans-serif;
+    color: var(--verde-oscuro);
+    font-size: 1.5rem;
     margin: 0;
     flex-grow: 1;
 }
 
+/* --- Contenedor de Filtros --- */
 .controles-filtros {
     display: flex;
     gap: 15px;
@@ -345,21 +346,22 @@ header h1 {
     border-radius: 30px;
     border: 2px solid var(--borde-color);
     background-color: var(--bg-input);
-    font-family: 'Nunito', sans-serif;
-    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
     color: var(--texto-principal);
     font-size: 0.95rem;
     cursor: pointer;
     outline: none;
     min-width: 180px;
     appearance: none; 
-    background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23D48C29%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
+    background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%234CAF50%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
     background-repeat: no-repeat;
     background-position: right 15px top 50%;
     background-size: 12px auto;
     width: auto;
 }
-.select-categoria:focus { border-color: var(--crust-gold); }
+.select-categoria:focus {
+    border-color: var(--verde-fresco);
+}
 
 .buscador-input {
     padding: 12px 20px;
@@ -367,14 +369,13 @@ header h1 {
     border: 2px solid var(--borde-color);
     background-color: var(--bg-input);
     color: var(--texto-principal);
-    font-family: 'Nunito', sans-serif;
-    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
     outline: none;
     width: 200px;
     transition: all 0.3s;
 }
 .buscador-input:focus {
-    border-color: var(--crust-gold);
+    border-color: var(--verde-fresco);
     width: 220px;
 }
 
@@ -391,7 +392,6 @@ header h1 {
     padding: 25px; 
     text-align: center; 
     box-shadow: var(--sombra-media);
-    border: 1px solid var(--borde-color);
     transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     position: relative;
     overflow: hidden;
@@ -402,16 +402,14 @@ header h1 {
 .producto-card:hover {
     transform: translateY(-8px);
     box-shadow: var(--sombra-flotante);
-    border-color: var(--crust-gold);
 }
 
 .producto-card .cinta-oferta {
     position: absolute;
     top: 12px; left: -32px;
-    background: linear-gradient(45deg, var(--crust-gold), #FFC107);
-    color: #fff;
+    background: linear-gradient(45deg, var(--naranja-acento), #FFC107);
+    color: #37474F;
     font-weight: 800;
-    font-family: 'Nunito', sans-serif;
     text-transform: uppercase;
     padding: 8px 45px;
     transform: rotate(-45deg);
@@ -423,134 +421,119 @@ header h1 {
 .producto-card img {
     max-width: 100%; 
     height: 140px; 
-    object-fit: cover;
-    border-radius: 12px;
+    object-fit: contain;
     margin: 0 auto 20px;
     display: block;
-    box-shadow: var(--sombra-sutil);
+    filter: drop-shadow(0 5px 5px rgba(0,0,0,0.1));
 }
 .producto-card.sin-imagen { padding-top: 40px; }
 
 .producto-card h3 { 
-    font-size: 1.2rem; 
-    margin: 10px 0; 
+    font-size: 1.15rem; margin: 10px 0; font-weight: 600; min-height: 45px; 
     color: var(--texto-principal);
-    min-height: 45px; 
+    font-family: 'Poppins', sans-serif;
     display: flex; align-items: center; justify-content: center;
 }
 .producto-card .precio { 
-    font-weight: 800; 
-    font-family: 'Nunito', sans-serif;
-    color: var(--crust-gold); 
-    font-size: 1.5rem; 
-    margin-bottom: 20px; 
+    font-weight: 800; color: var(--verde-oscuro); font-size: 1.5rem; margin-bottom: 20px; 
     display: block;
 }
 .producto-card .btn-agregar { 
-    background: var(--crust-gold);
+    background: var(--verde-fresco);
     color: white; 
     border: none; 
     padding: 12px 15px; 
     border-radius: 50px; 
     cursor: pointer; 
-    font-weight: 800;
-    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    font-family: 'Poppins', sans-serif;
     width: 100%; 
     text-transform: uppercase;
-    box-shadow: 0 4px 6px rgba(212, 140, 41, 0.2);
-    font-size: 0.95rem;
-    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(76, 175, 80, 0.2);
+    font-size: 1rem;
 }
+body.dark-mode .producto-card .btn-agregar { color: #121212; }
 
-.producto-card .btn-agregar:disabled { background: var(--borde-color); color: var(--texto-secundario); box-shadow: none; cursor: not-allowed; }
-.producto-card .btn-agregar:hover:not(:disabled) { 
-    background: var(--crust-gold-hover); 
-    transform: translateY(-2px);
-    box-shadow: 0 6px 12px rgba(212, 140, 41, 0.3); 
-}
+.producto-card .btn-agregar:disabled { background: #CFD8DC; color: #90A4AE; box-shadow: none; cursor: not-allowed; }
+body.dark-mode .producto-card .btn-agregar:disabled { background: #424242; color: #757575; }
+
+.producto-card .btn-agregar:hover:not(:disabled) { background: var(--verde-oscuro); box-shadow: 0 6px 12px rgba(46, 125, 50, 0.3); }
 
 /* --- Modales --- */
 .modal-overlay { 
     position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
-    background: rgba(42, 28, 20, 0.7); backdrop-filter: blur(5px);
+    background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(5px);
     display: flex; justify-content: center; align-items: center; 
     visibility: hidden; opacity: 0; transition: all 0.3s ease; 
     z-index: 1000; 
 }
 .modal-overlay.visible { visibility: visible; opacity: 1; }
 .modal-content { 
-    background: var(--bg-card); padding: 35px; border-radius: 24px; 
+    background: var(--bg-card); padding: 30px; border-radius: 24px; 
     width: 90%; max-width: 500px; max-height: 90vh; overflow-y: auto; 
     transform: scale(0.9); transition: all 0.3s;
     box-shadow: var(--sombra-flotante); position: relative;
     color: var(--texto-principal);
-    border: 1px solid var(--borde-color);
 }
 .modal-overlay.visible .modal-content { transform: scale(1); }
-.modal-close { position: absolute; top: 20px; right: 20px; background: var(--bg-body); border: 1px solid var(--borde-color); width: 35px; height: 35px; border-radius: 50%; font-size: 1.5rem; cursor: pointer; color: var(--texto-principal); display: flex; align-items: center; justify-content: center; transition: all 0.2s;}
-.modal-close:hover { background: var(--borde-color); }
+.modal-close { position: absolute; top: 15px; right: 20px; background: none; border: none; font-size: 2rem; cursor: pointer; color: #90A4AE; line-height: 1;}
 
 /* --- Lista Horarios --- */
-.lista-horarios { list-style: none; padding: 0; margin: 10px 0 0 0; display: flex; flex-direction: column; gap: 10px;}
+.lista-horarios { list-style: none; padding: 0; margin: 10px 0 0 0; display: flex; flex-direction: column; gap: 8px;}
+
 .lista-horarios li { 
     display: grid; 
     grid-template-columns: 120px 1fr; 
     align-items: center;
-    padding: 15px; 
-    border-radius: 16px;
+    padding: 12px 15px; 
+    border-radius: 12px;
     background-color: var(--bg-body);
-    border: 1px dashed var(--borde-color);
+    border: 1px solid var(--borde-color);
     transition: all 0.2s;
 }
+
 .horario-dia {
-    font-weight: 700;
+    font-weight: 600;
     color: var(--texto-secundario);
     text-transform: capitalize;
-    font-family: 'Nunito', sans-serif;
-    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.95rem;
     display: flex; align-items: center; gap: 5px;
 }
 .horario-hora {
     font-size: 0.95rem;
     color: var(--texto-principal);
     line-height: 1.4;
-    font-family: 'Nunito', sans-serif;
-    font-weight: 600;
 }
 .lista-horarios li.dia-actual { 
-    background-color: var(--bg-card); 
-    border: 2px solid var(--crust-gold);
+    background-color: var(--verde-claro-bg); 
+    border-color: var(--verde-fresco);
     box-shadow: var(--sombra-sutil);
 }
 .lista-horarios li.dia-actual .horario-dia {
-    color: var(--crust-gold);
-    font-weight: 800;
+    color: var(--verde-oscuro);
+    font-weight: 700;
 }
 .badge-hoy {
     font-size: 0.7rem;
-    background: var(--crust-gold);
+    background: var(--verde-fresco);
     color: white;
     padding: 2px 6px;
-    border-radius: 6px;
+    border-radius: 4px;
     margin-left: 5px;
     text-transform: uppercase;
-    font-weight: 800;
 }
+body.dark-mode .badge-hoy { color: #121212; }
 
-.modal-carrito-item { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px solid var(--borde-color); font-family: 'Nunito', sans-serif;}
+.modal-carrito-item { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px solid var(--borde-color); }
 .controles-cantidad { display: flex; align-items: center; gap: 8px; }
-.controles-cantidad .btn-cantidad { width: 32px; height: 32px; border-radius: 50%; cursor: pointer; border: 1px solid var(--borde-color); background: var(--bg-body); color: var(--texto-principal); font-weight: bold; transition: all 0.2s;}
-.controles-cantidad .btn-cantidad:hover { background: var(--borde-color); }
+.controles-cantidad .btn-cantidad { width: 28px; height: 28px; border-radius: 50%; cursor: pointer; border: 1px solid var(--borde-color); background: var(--bg-input); color: var(--texto-principal);}
 
-#form-cliente input { width: 100%; padding: 14px; margin-bottom: 15px; border: 2px solid var(--borde-color); border-radius: 12px; box-sizing: border-box; background: var(--bg-body); color: var(--texto-principal); font-family: 'Nunito', sans-serif; font-weight: 600;}
-#form-cliente input:focus { outline: none; border-color: var(--crust-gold); }
+#form-cliente input { width: 100%; padding: 12px; margin-bottom: 15px; border: 2px solid var(--borde-color); border-radius: 12px; box-sizing: border-box; background: var(--bg-input); color: var(--texto-principal);}
+.btn-whatsapp { background: #25D366; color: white; padding: 16px; width: 100%; border: none; border-radius: 50px; cursor: pointer; font-weight: 700; font-size: 1.1rem; display: flex; justify-content: center; gap: 10px; align-items: center;}
+.btn-vaciar { background: none; border: none; color: #E53935; font-size: 0.85rem; cursor: pointer; text-decoration: underline; }
 
-.btn-whatsapp { background: var(--wa-green); color: white; padding: 16px; width: 100%; border: none; border-radius: 50px; cursor: pointer; font-weight: 800; font-size: 1.1rem; display: flex; justify-content: center; gap: 10px; align-items: center; font-family: 'Nunito', sans-serif; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3); transition: all 0.3s;}
-.btn-whatsapp:hover { background: #20BA56; transform: translateY(-2px); }
-
-.btn-vaciar { background: none; border: none; color: var(--rojo-cerrado); font-size: 0.9rem; font-family: 'Nunito', sans-serif; font-weight: 700; cursor: pointer; text-decoration: underline; }
-
-#toast { position: fixed; bottom: 30px; right: 30px; background: var(--coffee); color: white; padding: 16px 30px; border-radius: 50px; font-weight: 700; font-family: 'Nunito', sans-serif; opacity: 0; visibility: hidden; transition: all 0.3s; z-index: 1001; transform: translateY(20px); box-shadow: var(--sombra-media); border: 1px solid rgba(255,255,255,0.1);}
+#toast { position: fixed; bottom: 30px; right: 30px; background: rgba(46, 125, 50, 0.95); color: white; padding: 16px 30px; border-radius: 50px; font-weight: 600; opacity: 0; visibility: hidden; transition: all 0.3s; z-index: 1001; transform: translateY(20px); }
 #toast.show { opacity: 1; visibility: visible; transform: translateY(0); }
 
 /* --- BOTONES FLOTANTES DISCRETOS --- */
@@ -565,87 +548,130 @@ header h1 {
 }
 
 .btn-flotante {
-    width: 45px;
-    height: 45px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
-    background: var(--bg-card); 
-    color: var(--texto-principal);
-    border: 1px solid var(--borde-color);
+    border: none;
+    background: rgba(0,0,0,0.6); 
+    color: white;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 1.2rem;
     transition: all 0.3s ease;
-    box-shadow: var(--sombra-media);
+    backdrop-filter: blur(2px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+body.dark-mode .btn-flotante {
+    background: rgba(255,255,255,0.2); 
+    color: white;
 }
 
 .btn-flotante:hover {
     transform: scale(1.1);
-    background: var(--crust-gold);
-    color: white;
-    border-color: var(--crust-gold);
+    background: var(--verde-fresco);
+    opacity: 1;
 }
 
-/* ========================================================
-   📱 RESPONSIVE OPTIMIZADO PARA MÓVILES (CORREGIDO)
-   ======================================================== */
+/* --- 📱 RESPONSIVE OPTIMIZADO PARA MÓVILES --- */
 @media (max-width: 768px) {
+    body { font-size: 14px; }
+    .categorias-sidebar { display: none; }
+    
+    /* Ajuste banner móvil */
+    .banner-top {
+        font-size: 0.75rem;
+        padding: 8px 30px 8px 10px;
+        text-align: center;
     }
+    .banner-contenido { justify-content: center; width: 100%; }
 
-    .producto-card .precio {
-        font-size: 1.15rem;
-        margin-bottom: 10px;
+    /* Header: Estructura de grilla para acomodar bien los botones */
+    header { padding: 12px 15px; flex-direction: column; gap: 12px; border-bottom-left-radius: 15px; border-bottom-right-radius: 15px;}
+    .marca-container { width: 100%; justify-content: center; }
+    .logo-negocio { width: 45px; height: 45px; } 
+    header h1 { font-size: 1.3rem; margin-left: 5px; text-align: center;}
+    
+    .header-controles { 
+        width: 100%; 
+        display: grid; 
+        grid-template-columns: 1fr 1fr; 
+        gap: 8px; 
     }
-
-    .producto-card .btn-agregar {
-        padding: 10px;
-        font-size: 0.85rem;
+    .estado-local { 
+        grid-column: span 2; 
+        justify-content: center; 
+        padding: 6px; 
+        font-size: 0.8rem; 
     }
-
-    .producto-card .cinta-oferta {
-        font-size: 0.6rem;
-        padding: 6px 38px;
-        top: 10px;
-        left: -34px;
+    .btn-horarios, #btn-ver-mapa {
+        font-size: 0.8rem;
+        padding: 8px;
+        justify-content: center;
+        width: 100%;
+        border-radius: 10px;
     }
-
-    .modal-content {
-        width: 96%;
-        padding: 22px 16px;
-        border-radius: 20px;
+    .btn-carrito { 
+        grid-column: span 2; 
+        justify-content: center; 
+        padding: 12px; 
+        font-size: 1rem; 
+        border-radius: 12px;
     }
+    
+    .tienda-container { flex-direction: column; margin: 15px auto; padding: 0 10px; gap: 15px;}
 
-    .modal-carrito-item {
+    .header-filtros { 
+        padding: 15px; 
+        gap: 12px; 
         flex-direction: column;
         align-items: stretch;
-        gap: 10px;
+        border-radius: 12px;
+    }
+    
+    .titulo-seccion { text-align: center; font-size: 1.2rem; margin-bottom: 5px; }
+    
+    .controles-filtros { display: flex; flex-direction: column; gap: 10px; width: 100%; }
+    
+    .select-categoria, .buscador-input { 
+        padding: 10px 15px; 
+        height: 44px; /* Altura ideal para tocar con el dedo */
+        font-size: 0.95rem; 
+        width: 100% !important;
+        min-width: 0 !important;
+        margin: 0;
+        border-radius: 8px;
     }
 
-    .controles-cantidad {
-        justify-content: center;
+    /* Grilla de productos: Forzada a 2 columnas siempre en celular */
+    .grid-productos { 
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 10px; 
     }
+    
+    .producto-card { padding: 10px; border-radius: 12px; }
+    .producto-card img { height: 80px; margin-bottom: 8px; }
+    .producto-card h3 { font-size: 0.85rem; min-height: 36px; margin: 5px 0; line-height: 1.2; align-items: flex-start; }
+    .producto-card .precio { font-size: 1rem; margin-bottom: 8px; }
+    .producto-card .btn-agregar { padding: 10px 5px; font-size: 0.8rem; border-radius: 8px; }
+    .producto-card .cinta-oferta { font-size: 0.6rem; padding: 4px 30px; top: 10px; left: -32px; }
 
-    .utilidades-container {
-        bottom: 14px;
-        left: 14px;
-        gap: 10px;
-    }
+    /* Modales */
+    .modal-content { padding: 20px 15px; width: 95%; border-radius: 16px; }
+    .modal-carrito-item { flex-direction: column; align-items: flex-start; gap: 10px; }
+    .modal-carrito-item > div:last-child { width: 100%; text-align: right; font-weight: bold; }
+    .controles-cantidad { width: 100%; justify-content: space-between; background: var(--bg-body); padding: 5px; border-radius: 8px; }
+    
+    .utilidades-container { bottom: 15px; left: 15px; gap: 10px; }
+    .btn-flotante { width: 40px; height: 40px; font-size: 1rem; }
+}
 
-    .btn-flotante {
-        width: 42px;
-        height: 42px;
-        font-size: 1rem;
-    }
-
-    #toast {
-        right: 12px;
-        left: 12px;
-        bottom: 15px;
-        text-align: center;
-        padding: 14px;
-        border-radius: 14px;
-    }
+/* Ajuste extra para celulares extremadamente pequeños */
+@media (max-width: 360px) {
+    .grid-productos { grid-template-columns: 1fr; }
 }
 </style>
 </head>
@@ -659,10 +685,10 @@ header h1 {
 </div>
 
 <header>
-    <a href="#" class="marca-container">
-        <img src="https://images.unsplash.com/photo-1509365465985-25d11c17e812?q=80&w=150&auto=format&fit=crop" alt="Logo Panadería" class="logo-negocio">
-        <h1>El Buen Trigo</h1>
-    </a>
+    <div class="marca-container">
+        <img src="https://i.pinimg.com/736x/fe/0f/98/fe0f984a2a34fd27b93ea39a70b26008.jpg" alt="Logo El Fresquito" class="logo-negocio">
+        <h1>Verdulería "El Fresquito"</h1>
+    </div>
     
     <div class="header-controles">
         <div id="indicador-estado" class="estado-local">Cargando...</div>
@@ -682,7 +708,7 @@ header h1 {
 
     <main class="productos-lista">
         <div class="header-filtros">
-            <h2 class="titulo-seccion">Nuestros Productos</h2>
+            <h2 class="titulo-seccion">Productos</h2>
             
             <div class="controles-filtros">
                 <select id="select-categoria" class="select-categoria">
@@ -693,8 +719,8 @@ header h1 {
             </div>
         </div>
 
-        <div id="loading" style="text-align:center; padding:30px; font-weight:800; font-family:'Nunito', sans-serif; color:var(--crust-gold);">Cargando el horno...</div>
-        <div id="error-msg" style="display:none; text-align:center; padding:20px; background:#FFEBEE; color:red; border-radius:12px; font-family:'Nunito', sans-serif;">⚠️ Error de conexión al cargar productos.</div>
+        <div id="loading" style="text-align:center; padding:20px; font-weight:bold; color:#666;">Cargando productos...</div>
+        <div id="error-msg" style="display:none; text-align:center; padding:20px; background:#FFEBEE; color:red; border-radius:10px;">⚠️ Error de conexión.</div>
         <div id="productos-container" class="grid-productos"></div>
     </main>
 
@@ -702,16 +728,16 @@ header h1 {
 
 <div class="utilidades-container">
     <button id="btn-toggle-tema" class="btn-flotante" title="Cambiar Tema (Día/Noche)">🌙</button>
-    <button id="btn-compartir" class="btn-flotante" title="Compartir Panadería">🔗</button>
+    <button id="btn-compartir" class="btn-flotante" title="Compartir Negocio">🔗</button>
 </div>
 
 <div id="modal-horarios" class="modal-overlay">
     <div class="modal-content" style="max-width: 420px;">
         <button class="modal-close" id="btn-cerrar-horarios">×</button>
-        <h2 style="text-align:center; color:var(--crust-gold); margin-bottom: 25px; margin-top: 5px;">Horarios de Atención</h2>
+        <h2 style="text-align:center; color:var(--verde-oscuro); margin-bottom: 20px;">Horarios de Atención</h2>
         
         <ul class="lista-horarios" id="lista-horarios-dinamica">
-             <li style="display:block; text-align: center; color: #888; padding: 20px; border:none;">Cargando horarios de la sucursal...</li>
+             <li style="display:block; text-align: center; color: #888; padding: 20px;">Cargando horarios desde la sucursal...</li>
         </ul>
 
     </div>
@@ -720,19 +746,19 @@ header h1 {
 <div id="modal-carrito" class="modal-overlay">
     <div class="modal-content">
         <button class="modal-close" id="btn-cerrar-modal">×</button>
-        <h2 style="color: var(--crust-gold); margin-top: 0;">Tu Pedido</h2>
+        <h2>Tu Pedido</h2>
         <div id="modal-carrito-items"></div>
-        <div style="border-top:2px dashed var(--borde-color); margin-top:20px; padding-top:20px; display:flex; justify-content:space-between; align-items:center;">
+        <div style="border-top:1px dashed #ccc; margin-top:15px; padding-top:15px; display:flex; justify-content:space-between; align-items:center;">
              <button id="btn-vaciar-carrito" class="btn-vaciar" style="display:none;">Vaciar Carrito</button>
-            <h3 style="margin:0; font-family:'Nunito', sans-serif; font-size:1.4rem;">Total: <span id="modal-total" style="color:var(--crust-gold); font-weight:800;">$0.00</span></h3>
+            <h3 style="margin:0;">Total: <span id="modal-total">$0.00</span></h3>
         </div>
-        <div style="background: var(--bg-body); padding: 25px; border-radius: 16px; margin-top: 25px; border: 1px solid var(--borde-color);">
-            <h3 style="font-size: 1.2rem; margin-top:0; margin-bottom: 15px; color: var(--coffee); font-family:'Lora', serif;">Datos de Envío/Retiro</h3>
+        <div style="background: var(--bg-body); padding: 20px; border-radius: 15px; margin-top: 20px; border: 1px solid var(--borde-color);">
+            <h2 style="font-size: 1.1rem; margin-bottom: 15px; color: var(--verde-oscuro);">Envío</h2>
             <form id="form-cliente">
-                <input type="text" id="nombre" placeholder="Tu nombre completo" required>
+                <input type="text" id="nombre" placeholder="Nombre completo" required>
                 <input type="tel" id="celular" placeholder="WhatsApp (ej: 2664...)" required>
             </form>
-            <button id="btn-enviar-pedido" class="btn-whatsapp">Enviar Pedido a WhatsApp</button>
+            <button id="btn-enviar-pedido" class="btn-whatsapp">Enviar a WhatsApp</button>
         </div>
     </div>
 </div>
@@ -743,7 +769,7 @@ header h1 {
 document.addEventListener('DOMContentLoaded', () => {
 
 // --- 📢 CONFIGURACIÓN DEL BANNER ---
-const TEXTO_BANNER = "📢 ¡Medialunas calientes todo el día! | 💳 Aceptamos Mercado Pago";
+const TEXTO_BANNER = "📢 ¡Envío GRATIS en pedidos superiores a $10.000! | 💳 Aceptamos Mercado Pago";
 
 // --- CONFIGURACIÓN DE URLS ---
 const params = new URLSearchParams(window.location.search);
@@ -759,8 +785,8 @@ const URL_SHEET_PRODUCTS = `https://script.google.com/macros/s/AKfycbxmrdId2-DIU
 const URL_SHEET_REGISTRO = 'https://script.google.com/macros/s/AKfycbyofyN54TXZd4nm5zzJ8gmNDO8aPZ8tdOddKMUQHq6Y4paFkl371zRlNekiOP2YG3S6Ow/exec';
 const URL_SHEET_HORARIOS = 'https://script.google.com/macros/s/AKfycbxvNRdU68PnP3jInuC0yhMntW5BJm3_NtcHsMacCck2xRt1G2hcateos4ZQP_Yf3-Rr/exec';
 
-const STORAGE_KEY = 'carrito_buentrigo_v1';
-const THEME_KEY = 'buentrigo_theme';
+const STORAGE_KEY = 'carrito_fresquito_v2';
+const THEME_KEY = 'fresquito_theme';
 
 // Variables de Estado
 let productos = [];
@@ -793,7 +819,7 @@ const btnVerCarrito = document.getElementById('btn-ver-carrito');
 const indicadorEstado = document.getElementById('indicador-estado');
 const buscador = document.getElementById('buscador');
 const btnVaciar = document.getElementById('btn-vaciar-carrito');
-const btnVerMapa = document.getElementById('btn-ver-mapa'); 
+const btnVerMapa = document.getElementById('btn-ver-mapa'); // Nuevo botón
 
 // Botones Flotantes y Banner
 const btnToggleTema = document.getElementById('btn-toggle-tema');
@@ -826,6 +852,7 @@ if(btnVerMapa) {
     });
 }
 
+
 // --- LOGICA DE TEMA OSCURO ---
 function aplicarTema(esOscuro) {
     if(esOscuro) {
@@ -856,8 +883,8 @@ btnToggleTema.addEventListener('click', () => {
 // --- LOGICA COMPARTIR ---
 btnCompartir.addEventListener('click', async () => {
     const shareData = {
-        title: 'Panadería "El Buen Trigo"',
-        text: '¡Mirá los productos frescos que tiene El Buen Trigo! Pedi online:',
+        title: 'Verdulería "El Fresquito"',
+        text: '¡Mirá los productos frescos que tiene El Fresquito! Pedi online:',
         url: window.location.href
     };
 
@@ -876,6 +903,7 @@ btnCompartir.addEventListener('click', async () => {
         }
     }
 });
+
 
 // --- LÓGICA DE HORARIOS DINÁMICA ---
 async function cargarHorariosRemotos() {
@@ -896,9 +924,9 @@ async function cargarHorariosRemotos() {
             let partesTexto = [];
 
             if (item.cerrado === true || String(item.cerrado).toUpperCase() === "SI" || String(item.cerrado).toUpperCase() === "TRUE") {
-                textoVisual = `<span style="color:var(--rojo-cerrado); font-weight:800; background:rgba(229, 57, 53, 0.1); padding:4px 10px; border-radius:6px; font-size:0.85rem;">CERRADO</span>`;
+                textoVisual = `<span style="color:var(--rojo-cerrado); font-weight:700; background:#FFEBEE; padding:2px 8px; border-radius:4px; font-size:0.85rem;">CERRADO</span>`;
                 const motivo = item.motivo ? String(item.motivo).trim() : "";
-                if(motivo.length > 0) textoVisual += `<div style="font-size: 0.85rem; color: var(--rojo-cerrado); margin-top:6px;">${motivo}</div>`;
+                if(motivo.length > 0) textoVisual += `<div style="font-size: 0.8rem; color: #E53935; margin-top:4px;">${motivo}</div>`;
             } else {
                 if (item.m_inicio && item.m_fin && item.m_inicio.toString() !== "") {
                     partesTexto.push(`${item.m_inicio} a ${item.m_fin}hs`);
@@ -939,7 +967,7 @@ async function cargarHorariosRemotos() {
 
     } catch (error) {
         console.error("Error cargando horarios:", error);
-        listaHorariosUL.innerHTML = '<li style="color:var(--rojo-cerrado); text-align:center; display:block; border:none;">Error al cargar horarios.</li>';
+        listaHorariosUL.innerHTML = '<li style="color:red; text-align:center; display:block;">Error al cargar horarios.</li>';
         horariosActivos = {};
         verificarEstadoNegocio();
     }
@@ -1025,7 +1053,7 @@ async function cargarProductosRemotos() {
         } else throw new Error();
     } catch(e) {
         errorMsg.style.display='block';
-        productos = [{id:1,nombre:'Producto de Prueba',precio:4500,categoria:'varios',stock:10}];
+        productos = [{id:1,nombre:'Manzana (Demo)',precio:1000,categoria:'frutas',stock:10}];
     } finally {
         loading.style.display='none';
         inicializarCategorias();
@@ -1095,7 +1123,7 @@ buscador.addEventListener('input', (e) => {
 
 function renderizarProductos(lista) {
     productosContainer.innerHTML = '';
-    if(!lista.length) { productosContainer.innerHTML = '<p style="width:100%; text-align:center; color:var(--texto-secundario); font-weight:bold;">No hay productos en esta categoría.</p>'; return; }
+    if(!lista.length) { productosContainer.innerHTML = '<p style="width:100%; text-align:center;">No hay productos.</p>'; return; }
     
     lista.forEach(p => {
         const div = document.createElement('div');
@@ -1123,7 +1151,7 @@ function agregarAlCarrito(p) {
     } else {
         carrito.push({...p, cantidad:1});
     }
-    showToast(`Añadido: ${p.nombre}`);
+    showToast(`Agregado: ${p.nombre}`);
     btnVerCarrito.classList.add('pop'); setTimeout(()=>btnVerCarrito.classList.remove('pop'),300);
     actualizarCarritoUI();
     localStorage.setItem(STORAGE_KEY, JSON.stringify(carrito));
@@ -1133,7 +1161,7 @@ function actualizarCarritoUI() {
     modalCarritoItemsContainer.innerHTML = '';
     let total = 0;
     if(!carrito.length) {
-        modalCarritoItemsContainer.innerHTML = '<p style="text-align:center; color:var(--texto-secundario); font-weight:600;">El carrito está vacío</p>';
+        modalCarritoItemsContainer.innerHTML = '<p style="text-align:center; color:#999;">Carrito vacío</p>';
         btnVaciar.style.display='none'; btnEnviarPedido.disabled=true;
     } else {
         btnVaciar.style.display='block'; btnEnviarPedido.disabled=false;
@@ -1144,13 +1172,13 @@ function actualizarCarritoUI() {
         const div = document.createElement('div');
         div.className = 'modal-carrito-item';
         div.innerHTML = `
-            <div style="flex:1"><b style="color:var(--coffee);">${item.nombre}</b><br><small style="color:var(--texto-secundario); font-weight:700;">${formatPrice(item.precio)}</small></div>
+            <div style="flex:1"><b>${item.nombre}</b><br><small>${formatPrice(item.precio)}</small></div>
             <div class="controles-cantidad">
                 <button class="btn-cantidad" data-id="${item.id}" data-op="-">-</button>
                 <span>${item.cantidad}</span>
                 <button class="btn-cantidad" data-id="${item.id}" data-op="+">+</button>
             </div>
-            <div style="width:80px; text-align:right; font-weight:800; color:var(--crust-gold);">${formatPrice(item.precio*item.cantidad)}</div>
+            <div style="width:70px; text-align:right;">${formatPrice(item.precio*item.cantidad)}</div>
         `;
         modalCarritoItemsContainer.appendChild(div);
     });
@@ -1167,7 +1195,7 @@ function actualizarCarritoUI() {
         });
     });
 }
-btnVaciar.addEventListener('click', ()=> { if(confirm('¿Vaciar el carrito?')) { carrito=[]; actualizarCarritoUI(); localStorage.removeItem(STORAGE_KEY); } });
+btnVaciar.addEventListener('click', ()=> { if(confirm('¿Vaciar?')) { carrito=[]; actualizarCarritoUI(); localStorage.removeItem(STORAGE_KEY); } });
 
 // Modales y Envio
 btnVerCarrito.addEventListener('click', ()=> modal.classList.add('visible'));
@@ -1178,27 +1206,27 @@ document.getElementById('btn-cerrar-horarios').addEventListener('click', ()=> mo
 btnEnviarPedido.addEventListener('click', (e) => {
     e.preventDefault();
     verificarEstadoNegocio();
-    if(!negocioAbierto) return alert("El local está cerrado en este momento.");
+    if(!negocioAbierto) return alert("El negocio está cerrado en este momento.");
     
     const nom = formCliente.querySelector('#nombre').value;
     const cel = formCliente.querySelector('#celular').value;
-    if(!nom || !cel) return alert("Por favor, completá tus datos");
-    if(!carrito.length) return alert("El carrito está vacío");
+    if(!nom || !cel) return alert("Completa tus datos");
+    if(!carrito.length) return alert("Carrito vacio");
 
     const total = carrito.reduce((a,b)=>a+b.precio*b.cantidad,0);
     const detalle = carrito.map(i=>`${i.cantidad}x ${i.nombre}`).join(' | ');
 
-    btnEnviarPedido.textContent = "Procesando Pedido...";
+    btnEnviarPedido.textContent = "Procesando...";
     
     // Registro Sheets
     fetch(URL_SHEET_REGISTRO, { method:'POST', mode:'cors', body: JSON.stringify({negocio_id:negocioActual, nombre_cliente:nom, celular_cliente:cel, detalle_compra:detalle, total:total}) }).catch(console.error);
 
     setTimeout(() => {
-        const msg = `¡Hola! Soy *${nom}*. Quiero encargar:%0A${carrito.map(i=>`▪ ${i.cantidad}x ${i.nombre}`).join('%0A')}%0A*Total: ${formatPrice(total)}*`;
+        const msg = `Hola El Fresquito! Soy *${nom}*. Pedido:%0A${carrito.map(i=>`▪ ${i.cantidad}x ${i.nombre}`).join('%0A')}%0A*Total: ${formatPrice(total)}*`;
         window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`, '_blank');
         carrito=[]; localStorage.removeItem(STORAGE_KEY); actualizarCarritoUI();
         modal.classList.remove('visible');
-        btnEnviarPedido.textContent = "Enviar Pedido a WhatsApp";
+        btnEnviarPedido.textContent = "Enviar a WhatsApp";
     }, 1000);
 });
 
